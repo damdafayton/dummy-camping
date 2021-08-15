@@ -1,0 +1,28 @@
+<% layout('layouts/boilerplate') %>
+    <div class="form-group col-md-6 offset-md-3">
+        <h3>New Campground</h3>
+        <form action="/campgrounds" class="validated-form" method="POST" novalidate enctype="multipart/form-data">
+            <label class="form-label pt-3" for="title">Title</label>
+            <input class="form-control" type="text" id="title" name="campground[title]" required>
+            <label class="form-label pt-3" for="location">Location</label>
+            <input class="form-control" type="text" id="location" name="campground[location]" required>
+            <label class="form-label pt-3" for="price">Price</label>
+            <div class="input-group">
+                <span class="input-group-text">$</span>
+                <input type="number" id="price" class="form-control" name="campground[price]"
+                    aria-label="Amount (to the nearest dollar)" required>
+                <span class="input-group-text">.00</span>
+            </div>
+            <!-- <input class="form-control" type="text" id="image" name="campground[image]" required> -->
+            <label class="form-label pt-3 d-block" for="description">Description</label>
+            <textarea class="form-control" type="text" id="description" name="campground[description]"
+                required></textarea>
+            <div class="input-group pt-3">
+                <input type="file" class="form-control" id="image" name="image" multiple>
+                <label class="input-group-text" for="image">Add Image(s)</label>
+            </div>
+            <button class="btn btn-primary my-3">Submit</button>
+            <a class="btn btn-danger" href="/campgrounds">Cancel</a>
+        </form>
+
+    </div>
