@@ -8,10 +8,13 @@
                 <div class="card mt-4">
                     <div class="card-body">
                         <div class="fs-5 fw-bold card-title">
-                            <a class="link-primary" href="/campgrounds/<%= campground._id %>">
-                                <img src="<%= (campground.image.length>0) ? campground.image[0].thumbindex : '' %> "
-                                    alt="" class="img-fluid img-index mb-3 d-block">
+                            <a class="link-primary w-100" href="/campgrounds/<%= campground._id %>">
+                                <div class="d-flex justify-content-center">
+                                    <img src="<%= (campground.image.length>0) ? campground.image[0].thumbindex : '' %> "
+                                        alt="" class="img-fluid img-index mb-3 d-block">
+                                </div>
                                 <%= campground.title %>
+
                             </a>
                         </div>
                         <div class="card-text">
@@ -24,7 +27,7 @@
     </div>
     <script>
         // const mapToken = '<%- process.env.MAPBOX_TOKEN %>'
-        const campgrounds = { features: <%- JSON.stringify(campgrounds) %> }
+        const campgrounds = { features: <% - JSON.stringify(campgrounds) %> }
         console.log('index: ', campgrounds)
 
     </script>

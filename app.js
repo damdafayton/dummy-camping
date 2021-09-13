@@ -1,7 +1,7 @@
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
 }
-// console.log(process.env)
+console.log(process.env)
 
 const express = require('express')
 const path = require('path')
@@ -9,7 +9,6 @@ const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
-
 const flash = require('connect-flash')
 const override = require('method-override')
 const morgan = require('morgan')
@@ -24,11 +23,12 @@ const p = require('passport')
 const pLocal = require('passport-local')
 const User = require('./models/user')
 
+//security modules
 const mongoSanitize = require('express-mongo-sanitize')
 const helmet = require('helmet')
 
-const dbUrl= process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp'
-// const dbUrl= process.env.DB_URL
+const dbUrl = process.env.DB_URL
+// || 'mongodb://localhost:27017/yelp-camp'
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
@@ -100,17 +100,17 @@ const store = MongoStore.create({
     name: 'sgir',
     mongoUrl: dbUrl,
     touchAfter: 24 * 60 * 60,
-    crypto: {secret}
+    crypto: { secret }
 })
 
 store.on("error", function (e) {
     console.log("SESSION STORE ERROR", e)
 })
 
-const sessionStore={ 
+const sessionStore = {
     // secure:true,
     store,
-    name:'sesiion',
+    name: 'sesiion',
     secret,
     resave: false,
     saveUninitialized: true,
@@ -127,7 +127,8 @@ p.deserializeUser(User.deserializeUser())
 
 app.use(flash())
 app.use((req, res, next) => {
-    console.log(req.query)
+    console.log('query: ' + req.query)
+    console.log('user: ' + req.user)
     res.locals.currentUser = req.user
     res.locals.successMsg = req.flash('success')
     res.locals.errorMsg = req.flash('error')

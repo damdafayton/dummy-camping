@@ -1,5 +1,5 @@
 // const campgroundsParse = JSON.parse(campgrounds)
-console.log('cgs: ', campgrounds)
+// console.log('cgs: ', campgrounds)
 // console.log('cgsParse: ', campgroundsParse)
 
 mapboxgl.accessToken = 'pk.eyJ1IjoieWVscGZheXRvbiIsImEiOiJja3M4eXoydGIxMG9zMnFzMG9oaXo4aGQxIn0.JKcOjIi80DXR1Sx0_KOQLQ';
